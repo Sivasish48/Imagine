@@ -45,6 +45,25 @@ export function Generate() {
     }
   }
 
+  async function downloadImage(imageUrl, index) {
+    try {
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `generated_image_${index + 1}.jpg`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading image:', error);
+      setError('Failed to download image');
+    }
+  }
+
+
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-[#8b00ff]">
       <header className="fixed top-0 left-0 right-0 px-4 lg:px-6 h-14 flex items-center justify-between bg-[#8b00ff] z-50">
@@ -68,7 +87,7 @@ export function Generate() {
             Generate stunning AI-powered images with just a few clicks.
           </p>
         </div>
-        <div className="flex w-full max-w-md items-center space-x-2">
+        <div className="flex w-full max-w-md items-center space-x-2 bg-[#8b00ff]">
           <Input
             type="text"
             placeholder="Enter a prompt..."
@@ -96,13 +115,12 @@ export function Generate() {
                   alt={`Generated Image ${index + 1}`}
                   className="w-64 h-64 overflow-hidden rounded-lg object-cover transition-transform duration-300 hover:scale-105"
                 />
-                <a
-                  href={imageUrl}
-                  download={`generated_image_${index + 1}.jpg`}
-                  className="mt-2 inline-block bg-white px-4 py-2 text-sm font-medium text-[#8b00ff] rounded-lg shadow-sm transition-colors hover:bg-white/90"
+                <Button
+                  onClick={() => downloadImage(imageUrl, index)}
+                  className="mt-2 bg-white px-4 py-2 text-sm font-medium text-[#8b00ff] rounded-lg shadow-sm transition-colors hover:bg-white/90"
                 >
                   Download Image
-                </a>
+                </Button>
               </div>
             ))}
           </div>
