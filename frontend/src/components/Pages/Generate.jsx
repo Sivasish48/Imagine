@@ -4,7 +4,46 @@ import { Button } from "@/components/ui/button";
 import { motion } from 'framer-motion';
 
 export function Generate() {
+  const [prompt, setPrompt] = useState('');
+  const [images, setImages] = useState([]);
+  const [error, setError] = useState('');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
+  async function generateImage() {
+    setError('');
+    setImages([]);
+
+    try {
+      const response = await fetch('http://localhost:5000/generate-image', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt,
+          negative_prompt: '', // You can add UI for this if needed
+          width: 512, // Default value, you can add UI to change this
+          height: 512, // Default value, you can add UI to change this
+          num_outputs: 1, // Default value, you can add UI to change this
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to generate image');
+      }
+
+      const data = await response.json();
+      
+      if (Array.isArray(data.images)) {
+        setImages(data.images);
+      } else {
+        throw new Error('Unexpected response format');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      setError(error.message);
+    }
+  }
 
   return (
     <section className="w-full py-12 md:py-24 lg:py-32 bg-[#8b00ff]">
@@ -22,7 +61,6 @@ export function Generate() {
           {isMenuOpen ? <XIcon className="h-6 w-6 text-white" /> : <MenuIcon className="h-6 w-6 text-white" />}
           <span className="sr-only">Toggle navigation menu</span>
         </Button>
-       
       </header>
       <div className="container flex flex-col items-center justify-center gap-8 px-4 md:px-6 mt-16">
         <div className="text-center space-y-2">
@@ -34,26 +72,41 @@ export function Generate() {
           <Input
             type="text"
             placeholder="Enter a prompt..."
+            value={prompt}
+            onChange={(e) => setPrompt(e.target.value)}
             className="flex-1 rounded-md border-0 bg-white/10 px-4 py-2 text-white focus:ring-0 placeholder:text-white/50"
           />
           <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.95 }}>
             <Button
-              type="submit"
+              type="button"
+              onClick={generateImage}
               className="rounded-md bg-white px-6 py-2 text-sm font-medium text-[#8b00ff] shadow-sm transition-colors hover:bg-white/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
             >
               Generate
             </Button>
           </motion.div>
         </div>
-        <div className="flex justify-center items-center w-full">
-          <img
-            src="/placeholder.svg"
-            alt="Generated Image"
-            width={300}
-            height={150}
-            className="aspect-auto w-[40%] overflow-hidden rounded-lg object-cover transition-transform duration-300 hover:scale-105"
-          />
-        </div>
+        {error && <p className="text-red-500">{error}</p>}
+        {images.length > 0 && (
+          <div className="flex flex-wrap justify-center items-center w-full gap-4">
+            {images.map((imageUrl, index) => (
+              <div key={index} className="flex flex-col items-center">
+                <img
+                  src={imageUrl}
+                  alt={`Generated Image ${index + 1}`}
+                  className="w-64 h-64 overflow-hidden rounded-lg object-cover transition-transform duration-300 hover:scale-105"
+                />
+                <a
+                  href={imageUrl}
+                  download={`generated_image_${index + 1}.jpg`}
+                  className="mt-2 inline-block bg-white px-4 py-2 text-sm font-medium text-[#8b00ff] rounded-lg shadow-sm transition-colors hover:bg-white/90"
+                >
+                  Download Image
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

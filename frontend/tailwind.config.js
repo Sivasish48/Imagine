@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  mode: 'jit', // Enable JIT mode
   darkMode: ["class"],
   content: [
     './pages/**/*.{js,jsx}',
@@ -7,7 +8,10 @@ module.exports = {
     './app/**/*.{js,jsx}',
     './src/**/*.{js,jsx}',
   ],
-  prefix: "",
+  safelist: [
+    'delay-[1s]', 
+    'delay-[2s]'
+  ],
   theme: {
     container: {
       center: true,
