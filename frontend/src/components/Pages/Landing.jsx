@@ -4,25 +4,7 @@
 * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
 */
 
-/** Add fonts into your Next.js project:
 
-import { Bricolage_Grotesque } from 'next/font/google'
-import { Syne } from 'next/font/google'
-
-bricolage_grotesque({
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-syne({
-  subsets: ['latin'],
-  display: 'swap',
-})
-
-To read more about using these font, please visit the Next.js documentation:
-- App Directory: https://nextjs.org/docs/app/building-your-application/optimizing/fonts
-- Pages Directory: https://nextjs.org/docs/pages/building-your-application/optimizing/fonts
-**/
 
 import { Button } from "@/components/ui/button"
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar"

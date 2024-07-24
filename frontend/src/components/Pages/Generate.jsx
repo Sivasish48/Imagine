@@ -21,10 +21,10 @@ export function Generate() {
         },
         body: JSON.stringify({
           prompt,
-          negative_prompt: '', // You can add UI for this if needed
-          width: 512, // Default value, you can add UI to change this
-          height: 512, // Default value, you can add UI to change this
-          num_outputs: 1, // Default value, you can add UI to change this
+          negative_prompt: '', 
+          width: 512, 
+          height: 512, 
+          num_outputs: 1,
         }),
       });
 
