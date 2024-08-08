@@ -1,3 +1,34 @@
+const flattenColorPalette = (colors) => {
+  const result = {};
+  
+  const traverseColors = (colors, prefix = '') => {
+    for (const key in colors) {
+      const value = colors[key];
+      const newKey = prefix ? `${prefix}-${key}` : key;
+
+      if (typeof value === 'string') {
+        result[newKey] = value;
+      } else {
+        traverseColors(value, newKey);
+      }
+    }
+  };
+
+  traverseColors(colors);
+  return result;
+};
+
+function addVariablesForColors({ addBase, theme }) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+ 
+  addBase({
+    ":root": newVars,
+  });
+}
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   mode: 'jit', // Enable JIT mode
@@ -77,5 +108,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
-}
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addBase, theme }) {
+      addVariablesForColors({ addBase, theme });
+    },
+  ],
+};
