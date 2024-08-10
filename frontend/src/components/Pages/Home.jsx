@@ -83,32 +83,44 @@ import React from "react";
 import { BackgroundBeams } from "@/components/ui/background-beams.jsx";
 import { Button } from "@/components/ui/button"
 import { Zap } from "lucide-react";
+import Cards from "@/components/component/Cards.jsx";
+
 export default function HomePage() {
   return (
-<div className="min-h-[50rem] w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
-  <header>
-  <div className="absolute top-4 left-4 z-20">
-        <Zap className="text-white h-8 w-8" />
-        
+    <div className="min-h-screen bg-[#0a0a0a] text-white relative overflow-hidden">
+      <div className="min-h-[50rem] w-full rounded-md bg-black relative flex flex-col items-center justify-center antialiased">
+        <header>
+          <div className="absolute top-4 left-4 z-20">
+            <Zap className="text-white h-8 w-8" />
+          </div>
+        </header>
+        <div className="max-w-2xl mx-auto p-4 text-center">
+          <h1 className="relative z-5 h-20 text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300 font-sans font-bold">
+            Try Imagine
+          </h1>
+          <p className="text-neutral-400 max-w-lg mx-auto my-4 text-lg md:text-xl relative z-10">
+            Generate AI-powered images based on user prompts. Leverage state-of-the-art AI models to create unique and stunning visuals with just a few clicks.
+          </p>
+          <Button className="relative z-10 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold py-2 px-6 rounded-md mt-8 transform transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
+            Get Started
+          </Button>
+        </div>
+        <BackgroundBeams />
       </div>
-  </header>
-  <div className="max-w-2xl mx-auto p-4 text-center">
-    <h1 className="relative z-5 h-20 text-4xl md:text-7xl bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300 font-sans font-bold">
-      Try Imagine
-    </h1>
-    <p className="text-neutral-500 max-w-lg mx-auto my-4 text-lg md:text-xl relative z-10">
-      Generate AI-powered images based on user prompts. Leverage state-of-the-art AI models to create unique and stunning visuals with just a few clicks.
-    </p>
-    <Button className="relative z-10 bg-gradient-to-r from-purple-500 to-indigo-500 text-white font-semibold py-2 px-6 rounded-md mt-8 transform transition-transform duration-300 ease-in-out hover:scale-105 hover:shadow-lg">
-      Get Started
-    </Button>
-  </div>
-  <BackgroundBeams />
-</div>
+      <h2 className=" bg-black text-center font-bold text-6xl sm:text-6xl bg-gradient-to-b from-smoke-400 to-purple-800">
+  Get Started Today
+</h2>
 
-   
-    )
-    
-    }
+      <div className="bg-black flex items-center justify-center py-20 px-4">
+       
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 w-full max-w-7xl px-4">
+          <Cards />
+          <Cards />
+          <Cards />
+        </div>
+      </div>
+    </div>
+  );
+}
     
    
