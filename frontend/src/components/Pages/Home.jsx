@@ -107,16 +107,15 @@ export default function HomePage() {
         </div>
         <BackgroundBeams />
       </div>
-      <h2 className=" bg-black text-center font-bold text-6xl sm:text-6xl bg-gradient-to-b from-smoke-400 to-purple-800">
+      <h2 className="text-5xl text-center font-bold bg-clip-text  bg-gradient-to-r from-purple-700 via-blue-500 to-purple-500">
   Get Started Today
 </h2>
 
       <div className="bg-black flex items-center justify-center py-20 px-4">
        
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 w-full max-w-7xl px-4">
+        <div >
           <Cards />
-          <Cards />
-          <Cards />
+         
         </div>
       </div>
     </div>

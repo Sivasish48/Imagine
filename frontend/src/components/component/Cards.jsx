@@ -25,25 +25,38 @@ import { BackgroundGradient } from "../ui/background-gradient";
 
 export default function Cards() {
   return (
-    <div>
-      <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-black dark:bg-zinc-900">
-      
-        <p className="text-base sm:text-xl text-black mt-4 mb-2 dark:text-neutral-200">
-          Air Jordan 4 Retro Reimagined
-        </p>
+    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-8 w-full max-w-7xl px-4 ">
+    <BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-black dark:bg-zinc-900">
+  <h2 className="text-5xl font-bold text-white dark:text-neutral-200 text-center mb-4">
+    Generate Images
+  </h2>
+  <p className="text-3xl text-white dark:text-neutral-200 text-center leading-relaxed">
+    From Concept to Canvas:<br />
+    <span className="block mt-2">Watch AI Bring</span>
+    <span className="block">Your Ideas to Life!</span>
+  </p>
+</BackgroundGradient>
+<BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-black dark:bg-zinc-900">
+  <h2 className="text-5xl font-bold text-white dark:text-neutral-200 text-center mb-4">
+    Download Instanly
+  </h2>
+  <p className="text-3xl text-white dark:text-neutral-200 text-center leading-relaxed">
+    In just 1 Minute Recieve  <br />
+    <span className="block mt-2">Your Content</span>
+    <span className="block">Ready To Use!</span>
+  </p>
+</BackgroundGradient>
 
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          The Air Jordan 4 Retro Reimagined Bred will release on Saturday,
-          February 17, 2024. Your best opportunity to get these right now is by
-          entering raffles and waiting for the official releases.
-        </p>
-        <button className="rounded-full pl-4 pr-1 py-1 text-white flex items-center space-x-1 bg-black mt-4 text-xs font-bold dark:bg-zinc-800">
-          <span>Buy now </span>
-          <span className="bg-zinc-700 rounded-full text-[0.6rem] px-2 py-0 text-white">
-            $100
-          </span>
-        </button>
-      </BackgroundGradient>
+<BackgroundGradient className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-black dark:bg-zinc-900">
+  <h2 className="text-5xl font-bold text-white dark:text-neutral-200 text-center mb-4">
+  One-Click Sharing:
+  </h2>
+  <p className="text-3xl text-white dark:text-neutral-200 text-center leading-relaxed">
+  Instantly Publish to Your<br />
+    <span className="block mt-2">Favorite Platforms and</span>
+    <span className="block">Expand Your Reach!</span>
+  </p>
+</BackgroundGradient>
     </div>
   );
 }
