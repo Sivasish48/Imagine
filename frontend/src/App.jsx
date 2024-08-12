@@ -2,18 +2,20 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // Import your components here
-import { Landing } from './components/Pages/Landing.jsx';
+import Landing from './components/Pages/Landing.jsx';
 import { Generate } from './components/Pages/Generate.jsx';
-import HomePage from './components/Pages/Home.jsx';
+
+import Footer from './components/ui/Footer.jsx';
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/home" element={<HomePage />} />
+        
         <Route path="/" element={<Landing />} />
         <Route path="/generate" element={<Generate />} />
-        {/* Add more routes here as needed */}
+       
       </Routes>
+      <Footer />
     </Router>
   );
 }

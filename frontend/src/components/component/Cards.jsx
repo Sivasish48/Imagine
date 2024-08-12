@@ -32,7 +32,8 @@ export default function Cards() {
   </h2>
   <p className="text-3xl text-white dark:text-neutral-200 text-center leading-relaxed">
     From Concept to Canvas:<br />
-    <span className="block mt-2">Watch AI Bring</span>
+    <span className="block mt-2">Watch AI
+       Bring</span>
     <span className="block">Your Ideas to Life!</span>
   </p>
 </BackgroundGradient>
