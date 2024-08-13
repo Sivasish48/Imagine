@@ -9,7 +9,13 @@ dotenv.config();
 const app = express();
 const port = 5000;
 
-app.use(cors());
+app.use(cors(
+  {
+  origin:["https://imagine-in.vercel.app"],
+  methods:["POST"],
+  credentials:true
+}
+));
 app.use(bodyParser.json());
 
 const MODELSLAB_API_KEY = process.env.MODELSLAB_API_KEY;
