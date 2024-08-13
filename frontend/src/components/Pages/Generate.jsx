@@ -21,8 +21,10 @@ export function Generate() {
     try {
       const response = await fetch('https://imagine-peach.vercel.app/generate-image', {
         method: 'POST',
+        mode: 'no-cors',
         headers: {
           'Content-Type': 'application/json',
+           
         },
         body: JSON.stringify({
           prompt,
