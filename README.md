@@ -6,7 +6,7 @@ Imagine is a web application that generates AI-powered images based on user prom
 
 Check out our demo video to see Imagine in action:
 
-[Imagine AI Image Generator Demo](https://vimeo.com/989408428)
+[Imagine AI Image Generator Demo](https://youtu.be/b_uLigVoShM)
 
 ## Features
 
