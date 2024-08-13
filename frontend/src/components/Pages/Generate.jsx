@@ -19,7 +19,7 @@ export function Generate() {
     setIsLoading(true);
   
     try {
-      const response = await fetch('https://imagine-peach.vercel.app/generate-image', {
+      const response = await fetch('https://imagine-d75mnpsbt-sivasish48s-projects.vercel.app/generate-image', {
         method: 'POST',
         mode: 'no-cors',
         headers: {
