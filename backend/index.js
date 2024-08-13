@@ -11,8 +11,8 @@ const port = 5000;
 
 
 const corsOptions = {
-  origin: 'https://imagine-in.vercel.app', // Allow only this origin
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  origin: 'https://imagine-jvfogk2hv-sivasish48s-projects.vercel.app', // Allow only this origin
+  methods: 'POST',
   credentials: true,
   optionsSuccessStatus: 204
 };
