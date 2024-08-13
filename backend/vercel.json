@@ -3,6 +3,16 @@
   "bulds":[
     {"src": "*.js", "use" : "@vercel/node"}
   ],
+   "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "https://imagine-in.vercel.app"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, OPTIONS"
+        }
+      ]
 "routes":[
   {
     "src": "/(.*)",
